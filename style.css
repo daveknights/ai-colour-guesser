@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+}
+
+main {
+    font-family: sans-serif;
+    text-align: center;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+    background: linear-gradient(905deg, #50caff, #1673ba);
+    border-bottom: solid 2px #ccc;
+    color: white;
+    font-size: 3rem;
+    padding: 40px 0;
+    margin-bottom: 50px;
+}
+
+button {
+    background: #02bb70;
+    border: 0;
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0 2px 5px #777, inset 0 -5px 4px -2px #1fe88f;
+    color: white;
+    cursor: pointer;
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 50px;
+    margin: auto;
+    width: 100%;
+    -webkit-appearance: none;
+}
+
+p {
+    display: inline;
+}
+
+p, span {
+    font-size: 1.75rem;
+    line-height: 50px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.camera,
+.output {
+    width: 320px;
+}
+
+.border {
+    border: solid 1px #ccc;
+}
+
+.instructions {
+    color: #135;
+    display: block;
+    line-height: 1.5;
+    margin: 40px auto;
+    max-width: 1000px;
+    text-align: left;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Colour Guesser</title>
+    <script src="//unpkg.com/brain.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h1>Colour Guesser</h1>
+        <div class="container">
+            <div class="camera">
+                <video id="video">Video stream not available</video>
+                <button id="take-photo">Take photo</button>
+            </div>
+
+            <div class="output">
+                <img id="photo">
+                <div id="guess-result">
+                    <p id="guess"></p>
+                </div>
+            </div>
+        </div>
+        <canvas id="canvas" hidden></canvas>
+        <p class="instructions">Hold a solid coloured object up to the camera and take a photo to let me guess it's colour.
+            Currently I can recognise red, yellow, green, blue, pink and grey.</p>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
