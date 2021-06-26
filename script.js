@@ -11,13 +11,15 @@ let photoButton = null;
 
 network.train([
   {input: {r:1.0,g:0.0,b:0.0}, output:{Red: 1}},
+  {input: {r:0.5,g:0.0,b:0.0}, output:{Red: 1}},
   {input: {r:1.0,g:1.0,b:0.0}, output:{yellow: 1}},
+  {input: {r:0.5,g:0.5,b:0.0}, output:{yellow: 1}},
   {input: {r:0.0,g:1.0,b:0.0}, output:{Green: 1}},
-  {input: {r:0.2,g:0.8,b:0.4}, output:{Green: 1}},
+  {input: {r:0.0,g:0.5,b:0.0}, output:{Green: 1}},
   {input: {r:0.0,g:0.0,b:1.0}, output:{Blue: 1}},
-  {input: {r:0.2,g:0.4,b:0.8}, output:{Blue: 1}},
+  {input: {r:0.0,g:0.0,b:0.5}, output:{Blue: 1}},
   {input: {r:1.0,g:0.0,b:1.0}, output:{Pink: 1}},
-  {input: {r:0.5,g:0.1,b:0.3}, output:{Pink: 1}},
+  {input: {r:0.5,g:0.0,b:0.5}, output:{Pink: 1}},
   {input: {r:0.5,g:0.5,b:0.5}, output:{Grey: 1}},
   {input: {r:0.1,g:0.1,b:0.1}, output:{Grey: 1}},
 ]);
