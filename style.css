@@ -4,7 +4,6 @@
 
 main {
     font-family: sans-serif;
-    text-align: center;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
 }
@@ -43,6 +42,10 @@ p, span {
     line-height: 50px;
 }
 
+h1, #guess-result {
+    text-align: center;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -63,6 +66,5 @@ p, span {
     display: block;
     line-height: 1.5;
     margin: 40px auto;
-    max-width: 1000px;
-    text-align: left;
+    max-width: 900px;
 }
