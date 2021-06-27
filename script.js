@@ -39,8 +39,6 @@ function getColour() {
         };
         const result = brain.likely(colorObj, network);
 
-        console.log(colorObj);
-
         guess.textContent = `I guess this is ${result}`;
         guessResult.classList.add('border');
     });
