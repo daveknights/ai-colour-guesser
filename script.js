@@ -10,46 +10,48 @@ let photo = null;
 let photoButton = null;
 
 network.train([
-  {input: {r:1.0,g:0.0,b:0.0}, output:{Red: 1}},
-  {input: {r:0.5,g:0.0,b:0.0}, output:{Red: 1}},
-  {input: {r:1.0,g:1.0,b:0.0}, output:{yellow: 1}},
-  {input: {r:0.5,g:0.5,b:0.0}, output:{yellow: 1}},
-  {input: {r:0.0,g:1.0,b:0.0}, output:{Green: 1}},
-  {input: {r:0.0,g:0.5,b:0.0}, output:{Green: 1}},
-  {input: {r:0.0,g:0.0,b:1.0}, output:{Blue: 1}},
-  {input: {r:0.0,g:0.0,b:0.5}, output:{Blue: 1}},
-  {input: {r:1.0,g:0.0,b:1.0}, output:{Pink: 1}},
-  {input: {r:0.5,g:0.0,b:0.5}, output:{Pink: 1}},
-  {input: {r:0.5,g:0.5,b:0.5}, output:{Grey: 1}},
-  {input: {r:0.1,g:0.1,b:0.1}, output:{Grey: 1}},
+    {input: {r:1.0,g:0.0,b:0.0}, output:{Red: 1}},
+    {input: {r:0.5,g:0.0,b:0.0}, output:{Red: 1}},
+    {input: {r:1.0,g:1.0,b:0.0}, output:{yellow: 1}},
+    {input: {r:0.7,g:0.5,b:0.0}, output:{yellow: 1}},
+    {input: {r:0.0,g:1.0,b:0.0}, output:{Green: 1}},
+    {input: {r:0.1,g:0.5,b:0.1}, output:{Green: 1}},
+    {input: {r:0.0,g:0.0,b:1.0}, output:{Blue: 1}},
+    {input: {r:0.0,g:0.0,b:0.5}, output:{Blue: 1}},
+    {input: {r:1.0,g:0.0,b:1.0}, output:{Pink: 1}},
+    {input: {r:0.5,g:0.0,b:0.5}, output:{Pink: 1}},
+    {input: {r:0.5,g:0.5,b:0.5}, output:{Grey: 1}},
+    {input: {r:0.1,g:0.1,b:0.1}, output:{Grey: 1}},
 ]);
 
 function convertNumber(num) {
     return (num / 255).toFixed(1);
 }
 
-function getColour(img) {
-    const colorThief = new ColorThief();
-    const dominantColour = colorThief.getColor(img);
-    const colorObj = {
-        r: convertNumber(dominantColour[0]),
-        g: convertNumber(dominantColour[1]),
-        b: convertNumber(dominantColour[2])
-    };
-    const result = brain.likely(colorObj, network);
+function getColour() {
+    checkPhotoLoaded().then(img => {
+        const colorThief = new ColorThief();
+        const dominantColour = colorThief.getColor(img);
+        const colorObj = {
+            r: convertNumber(dominantColour[0]),
+            g: convertNumber(dominantColour[1]),
+            b: convertNumber(dominantColour[2])
+        };
+        const result = brain.likely(colorObj, network);
 
-    guess.textContent = `I guess this is ${result}`;
-    guessResult.classList.add('border');
+        console.log(colorObj);
+
+        guess.textContent = `I guess this is ${result}`;
+        guessResult.classList.add('border');
+    });
 }
 
 function checkPhotoLoaded() {
     const img = document.querySelector('img');
 
-    if (img.complete !== true) {
-        requestAnimationFrame(checkPhotoLoaded);
-    } else {
-        getColour(img);
-    }
+    return new Promise(resolve => {
+        img.addEventListener('load', () => resolve(img));
+    });
 }
 
 function takepicture() {
@@ -62,7 +64,7 @@ function takepicture() {
     const data = canvas.toDataURL('image/png');
     photo.setAttribute('src', data);
 
-    checkPhotoLoaded();
+    getColour();
 }
 
 function startup() {
@@ -103,7 +105,6 @@ function init() {
         startup();
     } else {
         document.querySelector('h1').textContent = 'No camera found for this device';
-        console.log('No Camera');
     }
 }
 
