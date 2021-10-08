@@ -40,12 +40,13 @@ function getColour() {
         const result = brain.likely(colorObj, network);
 
         guess.textContent = `I guess this is ${result}`;
-        guessResult.classList.add('border');
-    });
+        guessResult.classList.add('guess-styles');
+    }).catch(err => { console.log(err) });
 }
 
 function checkPhotoLoaded() {
-    const img = document.querySelector('img');
+    const img = document.querySelector('#photo');
+    img.classList.add('show');
 
     return new Promise(resolve => {
         img.addEventListener('load', () => resolve(img));

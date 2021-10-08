@@ -1,31 +1,54 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#54717e">
     <title>Colour Guesser</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/brain.js/2.0.0-beta.1/brain-browser.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icons/apple-icon-180.png">
+    <link rel="icon" type="image/png" href="/app-icon.png">
+    <style media="screen">
+        *{box-sizing:border-box;font-family:sans-serif;margin:0;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}.page-wrapper{color:#54717e;height:100vh;margin:0 auto;max-width:1920px;position:relative}@media (min-width: 768px){.container{margin:0 auto;max-width:1000px}}header{border-bottom:solid 1px #54717e;margin-bottom:10px;padding:5px}@media (min-width: 768px){header{margin-bottom:15px}}header .container{display:flex}.logo{height:60px;margin-right:5px;width:auto}@media (min-width: 768px){.logo{height:100px;width:auto}}h1{font-size:1.5rem;line-height:60px;padding-left:1px;position:relative;text-align:center;width:calc(100% - 60px)}@media (min-width: 768px){h1{font-size:3rem;line-height:90px}}h1:before{background:#54717e;content:'';height:40px;left:0;position:absolute;top:10px;width:1px}@media (min-width: 768px){h1:before{height:80px;top:10px}}main{padding:0 12px}@media (min-width: 768px){main{padding:0 24px}}.instructions{display:block;font-size:0.875rem;font-weight:bold;margin-bottom:15px}@media (min-width: 360px){.instructions{font-size:1.075rem}}@media (min-width: 768px){.instructions{background:#eef1f2;font-size:1.125rem;padding:20px 10px}}@media (min-width: 1200px){.instructions{font-size:1.45rem;padding:30px 25px}}.input-output{border-radius:10px 10px 0 0;overflow:hidden}@media (min-width: 768px){.input-output{display:flex;gap:12px}}#video{width:50%;height:auto}@media (min-width: 768px){#video{display:flex;width:100%}}#take-photo{background:#54717e;border:dotted 3px #415862;box-shadow:inset 0 0 0 4px #668999,inset 0 0 0 17px #415862;border-radius:50%;color:white;cursor:pointer;font-size:1.25rem;font-weight:bold;height:120px;margin-left:auto;width:120px;-webkit-appearance:none}@media (min-width: 768px){#take-photo{border:solid 2px #4e4e4e;border-radius:10px;box-shadow:inset 0 2px 5px #8ca0a6, inset 0 -1px 15px #3d535c;font-size:1.75rem;height:80px;line-height:70px;margin-top:1px;width:100%}#take-photo br{display:none}}@media (max-width: 767px){#take-photo{padding-bottom:10px}}.output{background:#eef1f2;position:relative}.output:after{color:#a9b8be;content:'?';font-size:12rem;left:50%;position:absolute;top:50%;transform:translate(-50%, -50%)}@media (max-width: 767px){.output{margin-bottom:10px}}.output img{display:block;height:180px;margin:0 auto;opacity:0;width:auto}@media (min-width: 360px){.output img{height:200px}}@media (min-width: 768px){.output img{height:auto;width:100%}}#photo.show{opacity:1;position:relative;z-index:1}#guess-result{background:#eef1f2;height:40px;line-height:25px}@media (min-width: 375px){#guess-result{height:60px;line-height:45px}}@media (min-width: 768px){#guess-result{height:80px;line-height:70px}}#guess-result.guess-styles{border-top:solid 1px #54717e;color:#415862;font-size:1.5rem;padding:5px 0 10px;text-align:center}@media (min-width: 375px){#guess-result.guess-styles{font-size:1.75rem}}@media (max-width: 767px){.camera{align-items:center;bottom:40px;display:flex;left:0;padding:0 12px;position:absolute}}@media (min-width: 768px){.output,.camera{width:50%}}small{color:#415862;display:block;margin-top:10px;text-align:right}@media (max-width: 767px){small{bottom:10px;position:absolute}}
+    </style>
 </head>
 <body>
-    <main>
-        <h1>Colour Guesser</h1>
-        <div class="container">
-            <div class="camera">
-                <video id="video">Video stream not available</video>
-                <button id="take-photo">Take photo</button>
+    <div class="page-wrapper">
+        <header>
+            <div class="container">
+                <img class="logo" srcset="app-logo.png 60w, app-logo-lg.png 100w"
+                     sizes="(max-width: 767px) 60px"
+                     src="app-logo-lg.png"
+                     alt="?" height="60" width="60">
+                <h1>AI Colour Guesser</h1>
             </div>
-
-            <div class="output">
-                <img id="photo">
-                <div id="guess-result">
-                    <p id="guess"></p>
+        </header>
+        <main class="container">
+            <p class="instructions">Hold a solid coloured object up to the camera*, then take a photo to let me guess it's colour.
+                Currently I can recognise red, yellow, green, blue, pink and grey.</p>
+            <div class="input-output">
+                <div class="output">
+                    <img id="photo" height="200" width="266">
+                    <div id="guess-result">
+                        <p id="guess"></p>
+                    </div>
+                </div>
+                <div class="camera">
+                    <video id="video">Video stream not available</video>
+                    <button id="take-photo">Take <br>photo</button>
                 </div>
             </div>
-        </div>
-        <canvas id="canvas" hidden></canvas>
-        <p class="instructions">Hold a solid coloured object up to the camera (the object will need to fill the majority of the frame), then take a photo to let me guess it's colour.
-            Currently I can recognise red, yellow, green, blue, pink and grey.</p>
-    </main>
+            <canvas id="canvas" hidden></canvas>
+            <small>*The object will need to fill the majority of the frame</small>
+        </main>
+    </div>
     <script src="script.js"></script>
+    <script>
+        if ('serviceWorker in navigator') {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+    </script>
 </body>
 </html>

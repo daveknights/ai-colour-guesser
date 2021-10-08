@@ -1,0 +1,265 @@
+$main-color: #54717e;
+$secondary-color: #415862;
+$light-text: #a9b8be;
+$bg-color: #eef1f2;
+
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    margin: 0;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+.page-wrapper {
+    color: $main-color;
+    height: 100vh;
+    margin: 0 auto;
+    max-width: 1920px;
+    position: relative;
+}
+
+.container {
+    @media (min-width: 768px) {
+        margin: 0 auto;
+        max-width: 1000px;
+    }
+}
+
+header {
+    border-bottom: solid 1px $main-color;
+    margin-bottom: 10px;
+    padding: 5px;
+
+    @media (min-width: 768px) {
+        margin-bottom: 15px;
+    }
+
+    .container {
+        display: flex;
+    }
+}
+
+.logo {
+    height: 60px;
+    margin-right: 5px;
+    width: auto;
+
+    @media (min-width: 768px) {
+        height: 100px;
+        width: auto;
+    }
+}
+
+h1 {
+    font-size: 1.5rem;
+    line-height: 60px;
+    padding-left: 1px;
+    position: relative;
+    text-align: center;
+    width: calc(100% - 60px);
+
+    @media (min-width: 768px) {
+        font-size: 3rem;
+        line-height: 90px;
+    }
+
+    &:before {
+        background: $main-color;
+        content: '';
+        height: 40px;
+        left: 0;
+        position: absolute;
+        top: 10px;
+        width: 1px;
+
+        @media (min-width: 768px) {
+            height: 80px;
+            top: 10px;
+        }
+    }
+}
+
+main {
+    padding: 0 12px;
+
+    @media (min-width: 768px) {
+        padding: 0 24px;
+    }
+}
+
+.instructions {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+
+    @media (min-width: 360px) {
+        font-size: 1.075rem;
+    }
+
+    @media (min-width: 768px) {
+        background: $bg-color;
+        font-size: 1.125rem;
+        padding: 20px 10px;
+    }
+
+    @media (min-width: 1200px) {
+        font-size: 1.45rem;
+        padding: 30px 25px;
+    }
+}
+
+.input-output {
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+
+    @media (min-width: 768px) {
+        display: flex;
+        gap: 12px;
+    }
+}
+
+#video {
+    width: 50%;
+    height: auto;
+
+    @media (min-width: 768px) {
+        display: flex;
+        width: 100%;
+    }
+}
+
+#take-photo {
+    background: $main-color;
+    border: dotted 3px $secondary-color;
+    box-shadow: inset 0 0 0 4px #668999, inset 0 0 0 17px $secondary-color;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-weight: bold;
+    height: 120px;
+    margin-left: auto;
+    width: 120px;
+    -webkit-appearance: none;
+
+    @media (min-width: 768px) {
+        border: solid 2px #4e4e4e;
+        border-radius: 10px;
+        box-shadow: inset 0 2px 5px #8ca0a6, inset 0 -1px 15px #3d535c;
+        font-size: 1.75rem;
+        height: 80px;
+        line-height: 70px;
+        margin-top: 1px;
+        width: 100%;
+
+        br {
+            display: none;
+        }
+    }
+
+    @media (max-width: 767px) {
+        padding-bottom: 10px;
+    }
+}
+
+.output {
+    background: $bg-color;
+    position: relative;
+
+    &:after {
+        color: $light-text;
+        content: '?';
+        font-size: 12rem;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    @media (max-width: 767px) {
+        margin-bottom: 10px;
+    }
+
+    img {
+        display: block;
+        height: 180px;
+        margin: 0 auto;
+        opacity: 0;
+        width: auto;
+
+        @media (min-width: 360px) {
+            height: 200px;
+        }
+
+        @media (min-width: 768px) {
+            height: auto;
+            width: 100%;
+        }
+    }
+}
+
+#photo.show {
+    opacity: 1;
+    position: relative;
+    z-index: 1;
+}
+
+#guess-result {
+    background: $bg-color;
+    height: 40px;
+    line-height: 25px;
+
+    @media (min-width: 375px) {
+        height: 60px;
+        line-height: 45px;
+    }
+
+    @media (min-width: 768px) {
+        height: 80px;
+        line-height: 70px;
+    }
+
+    &.guess-styles {
+        border-top: solid 1px $main-color;
+        color: $secondary-color;
+        font-size: 1.5rem;
+        padding: 5px 0 10px;
+        text-align: center;
+
+        @media (min-width: 375px) {
+            font-size: 1.75rem;
+        }
+    }
+}
+
+.camera {
+    @media (max-width: 767px) {
+        align-items: center;
+        bottom: 40px;
+        display: flex;
+        left: 0;
+        padding: 0 12px;
+        position: absolute;
+    }
+}
+
+.output,
+.camera {
+    @media (min-width: 768px) {
+        width: 50%;
+    }
+}
+
+small {
+    color: $secondary-color;
+    display: block;
+    margin-top: 10px;
+    text-align: right;
+
+    @media (max-width: 767px) {
+        bottom: 10px;
+        position: absolute;
+    }
+}
