@@ -73,7 +73,9 @@ function startup() {
     photoButton = document.getElementById('take-photo');
     mode = window.screen.width <= 800 ? 'environment' : 'user';
 
-    navigator.mediaDevices.getUserMedia({ video: true, facingMode: {exact: mode}, audio: false })
+    navigator.mediaDevices.getUserMedia({ video: {advanced: [{
+            facingMode: mode
+        }]}, audio: false })
         .then(function(stream) {
             video.srcObject = stream;
             video.play();
