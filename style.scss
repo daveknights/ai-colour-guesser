@@ -132,16 +132,17 @@ main {
 
 #take-photo {
     background: $main-color;
-    border: dotted 3px $secondary-color;
-    box-shadow: inset 0 0 0 4px #668999, inset 0 0 0 17px $secondary-color;
+    background: linear-gradient(322deg, #354750, #7396a6);
+    border: solid 10px #56707c;
+    box-shadow: inset 0 0 0 1px black, 0 0 0 1px black;
     border-radius: 50%;
     color: white;
     cursor: pointer;
     font-size: 1.25rem;
     font-weight: bold;
-    height: 120px;
+    height: 110px;
     margin-left: auto;
-    width: 120px;
+    width: 110px;
     -webkit-appearance: none;
 
     @media (min-width: 768px) {
