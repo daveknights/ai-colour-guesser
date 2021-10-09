@@ -1,5 +1,5 @@
 const network = new brain.NeuralNetwork();
-const width = 320;
+const width = 175;
 const guessResult = document.getElementById('guess-result');
 const guess = document.getElementById('guess');
 let height = 0;
@@ -72,7 +72,9 @@ function startup() {
     photo = document.getElementById('photo');
     photoButton = document.getElementById('take-photo');
 
-    navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+    facingMode = window.screen.width <= 800 ? 'environment' : 'user';
+
+    navigator.mediaDevices.getUserMedia({ video: true, facingMode: facingMode, audio: false })
         .then(function(stream) {
             video.srcObject = stream;
             video.play();
