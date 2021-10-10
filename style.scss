@@ -95,7 +95,7 @@ main {
     margin-bottom: 15px;
 
     @media (min-width: 360px) {
-        font-size: 1.075rem;
+        font-size: 1.125rem;
     }
 
     @media (min-width: 768px) {
@@ -107,6 +107,18 @@ main {
     @media (min-width: 1200px) {
         font-size: 1.45rem;
         padding: 30px 25px;
+    }
+}
+
+.mobile-instruction {
+    @media (min-width: 801px) {
+        display: none;
+    }
+}
+
+.desktop-instruction {
+    @media (max-width: 800px) {
+        display: none;
     }
 }
 
