@@ -120,19 +120,35 @@ main {
     }
 }
 
+.photo-wrapper,
 .video-wrapper {
     @media (max-width: 767px) {
         height: 0;
-        padding-bottom: 37.5%;
         position: relative;
+    }
+}
+
+.video-wrapper {
+    @media (max-width: 767px) {
+        padding-bottom: 36%;
         width: 50%;
+    }
+}
+
+.photo-wrapper {
+    @media (max-width: 767px) {
+        overflow: hidden;
+        padding-bottom: 72%;
+        width: 100%;
     }
 }
 
 #video {
     height: auto;
     width: 100%;
+}
 
+#video {
     @media (max-width: 767px) {
         position: absolute;
         left: 0;
@@ -202,27 +218,20 @@ main {
     }
 
     img {
-        display: block;
-        height: 180px;
-        margin: 0 auto;
         opacity: 0;
-        width: auto;
-
-        @media (min-width: 360px) {
-            height: 200px;
-        }
-
-        @media (min-width: 768px) {
-            height: auto;
-            width: 100%;
-        }
     }
 }
 
-#photo.show {
-    opacity: 1;
-    position: relative;
-    z-index: 1;
+#photo {
+    display: block;
+    height: auto;
+    width: 100%;
+
+    &.show {
+        opacity: 1;
+        position: relative;
+        z-index: 1;
+    }
 }
 
 #guess-result {
@@ -231,8 +240,8 @@ main {
     line-height: 25px;
 
     @media (min-width: 375px) {
-        height: 60px;
-        line-height: 45px;
+        height: 50px;
+        line-height: 35px;
     }
 
     @media (min-width: 768px) {
@@ -247,7 +256,7 @@ main {
         padding: 5px 0 10px;
         text-align: center;
 
-        @media (min-width: 375px) {
+        @media (min-width:768px) {
             font-size: 1.75rem;
         }
     }
