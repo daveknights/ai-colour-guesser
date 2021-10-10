@@ -130,16 +130,23 @@ main {
 
 .video-wrapper {
     @media (max-width: 767px) {
-        padding-bottom: 36%;
+        padding-bottom: 37.5%;
         width: 50%;
     }
 }
 
 .photo-wrapper {
+    margin: 0 auto;
+    overflow: hidden;
+
     @media (max-width: 767px) {
-        overflow: hidden;
-        padding-bottom: 72%;
+        padding-bottom: 70%;
         width: 100%;
+    }
+
+    @media (max-width: 374px) {
+        padding-bottom: 66.66%;
+        width: 90%;
     }
 }
 
